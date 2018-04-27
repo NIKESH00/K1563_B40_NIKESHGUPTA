@@ -39,7 +39,8 @@ Algorithm of SJF: 1.Start the execution/ Starting of the Algorithm.
 
 
 
-Program: SJF(Shortest Job First) Schedulling algorithm.
+Program: Shortest Remaining Processing Time First Schedulling algorithm(SROT) or SJF(Shortest Job First) scheduling algorithm using
+         preemptive schedule technique.
 
 #include<stdio.h>
 #include<conio.h>
