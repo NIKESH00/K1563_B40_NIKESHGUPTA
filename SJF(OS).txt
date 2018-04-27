@@ -72,7 +72,7 @@ for(i=0;i<l;i++)
 {
 (n+i)->status=0;
 printf("=================================\");
-printf("\n## Enter the Process Name : %d",&(n+i)->nam);
+printf("\n## Enter the Processes Name : %d",&(n+i)->nam);
 printf("\n## Enter the Arrival time of the process :%d",&(n+i)->avrt);
 printf("\n## Enter the CPU Burst Time for the process-- %d\n",&(n+i)->btt);
 for (i=0;i<l;i++)
@@ -121,6 +121,19 @@ printf("Average Waiting Time :%f\n\n",at);
 return 0;
 }
 }
+/*
+output: Shortest Job First For preemptive is as follows:-
+
+Enter the Number of processes you want to allocate: 4
+Enter the Arrival Time of the process : p1:0   p2:1  p3:2  p4:4
+Enter the Burst Time of the Processes : p1:5   p2:3  p3:3  p4:1
+waiting Time(Turn Around Time - Burst Time) : 7:p1   1:p2   3:p3   1:p4
+Turn Around Time(Completion Time - Arrival Time): 12:p1  4:p2  6:p3  2:p4
+
+Average Waiting Time for the above output is: 3.00
+Average Turn Around Time for the above output is: 6.00
+*/
+
 
  
       
