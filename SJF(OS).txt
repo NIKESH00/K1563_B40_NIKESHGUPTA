@@ -1,0 +1,126 @@
+AIM: Design a scheduler with multilevel queue having two queues which will schedule the
+     processes on the basis of pre-emptive shortest remaining processing time first algorithm (SROT) which is also known as
+     the Shortest Job First(SRTF).And also calculate the turnaround time and the average waiting time for each process where CPU
+     burst time is in milliseconds.
+
+Program Description:  SJF(Shortest Job First) Scheduling is the non-preemptive while in these program we will implement it in 
+                      in preemptive version of SJF also known as the Shortest Remaining Time First(SRTF/SROT).
+                                      In these scheduling algorithm, the process with the smallest amount of time remaining 
+                      until completion is selected to be executed.While the currently executing process is one of the shortest
+                      amount of time remaining , and hence that the time should only be reduced as an execution progress.
+                      Where the progress will always run till they complete pr either the new process is added that is requring
+                      a smaller amount of time.
+Advantages of SJF: 1. Short processes are handled very quickly.
+                   2. The system also requires very little time requirement since it only makes a decision when a process
+                      completes or the new process is added to it.
+                   3. When the new process is added to the algorithm it only needs to compare it with the currently running/executing
+                      process with the new process, ignoring all the other running processe waiting to execute.
+Disadvantages of SJF: 1. Similiar to the SJF(Shortest Job First) Schedulling algorithm,is having the potential or the ability to process starvation.
+                      2. As long as the process may held off the indefinitely if the shortest process are conyinually added.
+
+
+
+
+Program: SJF(Shortest Job First) Schedulling algorithm.
+
+#include<stdio.h>
+#include<conio.h>
+#include<stdlib.h>
+#include<malloc.h>
+int l,*b;
+struct probl
+{
+int nam,avrt,btt,trt,wet,lefty,status;
+}*n;
+void make(int numm)
+{
+b=(int*)malloc(num*sizeof(int));
+}
+int smallest(int numm)
+{
+int d=0,i;
+for(i=0;i<l;i++)
+{
+if((n+i)->btt<numm &&(n+i)->status==0)
+{
+*(b+d)=(n+i)->btt;
+d++;
+}}
+return d;}
+int searching(int numm)
+{
+int i;
+for (i=0;i<l;i++)
+{
+if ((n+i)->btt==numm &&(n+i)->status==0)
+{
+return i;
+}}}
+int main()
+{
+int i,d_tim=0,a,e_num=0,j,pr_numm,n_tim;
+float avrtt=0,at=0;
+printf("\n--------------------------------------------");
+printf("\n Shortest Job First Schedulling Algorithm\n");
+printf("----------------------------------------------"\n);
+printf("\n");
+printf("Enter the number of processes you want to allocate- ");
+scanf("%d",&n);
+make(l);
+n=(struct prob*)malloc(n*sizeof(struct prob));
+for(i=0;i<l;i++)
+{
+(n+i)->status=0;
+printf("=================================\");
+printf("\n## Enter the Process Name : %d",&(n+i)->nam);
+printf("\n## Enter the Arrival time of the process :%d",&(n+i)->avrt);
+printf("\n## Enter the CPU Burst Time for the process-- %d\n",&(n+i)->btt);
+for (i=0;i<l;i++)
+{
+if((n+i)->status==0)
+{
+a=(n+i)->btt;
+e_num=smaller(a);
+if (e_num>0)
+{
+(n+i)->left=(n+i)->btt;
+for(j=0;j<e_num;j++)
+{
+n_tim=d_tim;
+pr_numm=searching(*(b+j));
+if(d_tim<(n+pr_numm)->avrt)
+{
+if((n+i)->left>(n+pr_numm)->avrt)
+{
+d_tim=(n+pr_numm)->avrt;
+(n+i)->left=(n+i)->btt-(d_tim-n_tim);
+d_tim=d_tim+(n+n+pr_numm)->btt;
+(n+pr_numm)->status=1;}
+else{d_tim=d_tim+(n+i)->btt;
+(n+i)->trt=d_tim-(n+i)->avrt;
+(n+i)->status=1;
+if(d_tim<(n+pr_numm)->avrt)
+break;}}
+else{d_tim=d_tim+(n+pr_numm)->btt;}
+(n+pr_num)->trt=d_tim-(n+pr_numm)->avrt;
+(n+pr_numm)->status=1;}
+if((n+i)->status==0)
+{
+d_tim=d_tim+(n+i)->left;
+(n+i)->trt=d_time-(n+i)->avrt;
+(n+i)->status=1;}}
+else{d_tim=d_tim+(n+i)->btt;
+(n+i)->trt=d_tim-(n+i)->avrt;
+(n+i)->status=1;}}}
+printf("\nProcesses\t\tArrival Time \t\t CPU Burst Time\t\t Turn Arount Time\t\t Waiting Time\n");
+for(i=0;i<l;i++)
+{
+printf("%d\t\t %d\t\t\t %d\t\t\t %d\t\t\t\t %d\n",(n+i)->nam,(n+i)->avrt,(n+i)->btt,(n+i)->trt,(n+i)->wet);}
+printf("\nAverage Turnaround Time :%f\n",avrtt);
+printf("Average Waiting Time :%f\n\n",at);
+return 0;
+}
+}
+
+ 
+      
