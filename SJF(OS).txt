@@ -1,3 +1,6 @@
+                Preemptive Shortest Job First Scheduling Algorithm(SJF) Program
+                -----------------------------------------------------------------
+             -----------------------------------------------------------------------
 AIM: Design a scheduler with multilevel queue having two queues which will schedule the
      processes on the basis of pre-emptive shortest remaining processing time first algorithm (SROT) which is also known as
      the Shortest Job First(SRTF).And also calculate the turnaround time and the average waiting time for each process where CPU
@@ -18,6 +21,21 @@ Advantages of SJF: 1. Short processes are handled very quickly.
 Disadvantages of SJF: 1. Similiar to the SJF(Shortest Job First) Schedulling algorithm,is having the potential or the ability to process starvation.
                       2. As long as the process may held off the indefinitely if the shortest process are conyinually added.
 
+Algorithm of SJF: 1.Start the execution/ Starting of the Algorithm.
+                  2.Enter the number of the processes you want to allocate.
+                  3.Enter the Processes names which you like to set.
+                  4.Enter the Arrival Time of the Processes.
+                  5.Enter the Burst Time of the processes.
+                  6.Finally after entering the input by the user the Completion time is calculated for each of the processes
+                    and with the help of it the Turn Around Time is calculated by using the formula (Comletion time-Arrival time).
+                  7.Aswellas the Waiting Time is also calculated with the help of the Turn Around Time by using the formula as
+                    (Turn Around Time - Burst Time) of the CPU.
+                  8.After all these internal Calculation the Average Waiting Time is Calculated by adding all the waiting time values
+                    of the processes and dividing it by the number of the processes.
+                  9.At last the Average Turn Around Time is calculated by adding all the values obtained by the Turn Around Time divided
+                    by the number of the processes.
+                  10.Displaying all the processes along with their Gantt Chart.  
+                  11.At the end Termination of the program.  
 
 
 
