@@ -43,102 +43,124 @@ Program: Shortest Remaining Processing Time First Schedulling algorithm(SROT) or
          preemptive schedule technique.
 
 #include<stdio.h>
-#include<conio.h>
 #include<stdlib.h>
+#include<conio.h>
 #include<malloc.h>
-int l,*b;
-struct probl
+int n,*a;
+struct pro
 {
-int nam,avrt,btt,trt,wet,lefty,status;
-}*n;
-void make(int numm)
+int name,at,bt,tt,wt,left,status;
+}*p;
+void create(int num)
 {
-b=(int*)malloc(num*sizeof(int));
+a=(int*)malloc(num*sizeof(int));
 }
-int smallest(int numm)
+int smallers(int num)
 {
-int d=0,i;
-for(i=0;i<l;i++)
+int c=0,i;
+for(i=0;i<n;i++)
 {
-if((n+i)->btt<numm &&(n+i)->status==0)
+if((p+i)->bt<num && (p+i)->status==0)
 {
-*(b+d)=(n+i)->btt;
-d++;
-}}
-return d;}
-int searching(int numm)
+*(a+c)=(p+i)->bt;
+c++;
+}
+}
+return c;
+}
+int search(int num)
 {
 int i;
-for (i=0;i<l;i++)
+for(i=0;i<n;i++)
 {
-if ((n+i)->btt==numm &&(n+i)->status==0)
-{
+if((p+i)->bt==num && (p+i)->status==0)
 return i;
-}}}
+}
+}
 int main()
 {
-int i,d_tim=0,a,e_num=0,j,pr_numm,n_tim;
-float avrtt=0,at=0;
-printf("\n--------------------------------------------");
-printf("\n Shortest Job First Schedulling Algorithm\n");
-printf("----------------------------------------------"\n);
-printf("\n");
-printf("Enter the number of processes you want to allocate- ");
+int i,c_time=0,b,s_nums,j,pro_num,p_time;
+float att=0,awt=0;
+printf("--------------------------------------------\n");
+printf("--------------------------------------------");
+printf("\n SHORTEST REMAINING TIME FIRST ALGORITHM(SROT)/SJF WITH PREEMPTIVE");
+printf("\n---------------------------------------------");
+printf("\nEnter number of processes to be allocated: ");
 scanf("%d",&n);
-make(l);
-n=(struct prob*)malloc(n*sizeof(struct prob));
-for(i=0;i<l;i++)
+create(n);
+p=(struct pro *)malloc(n*sizeof(struct pro));
+for(i=0;i<n;i++)
+(p+i)->status=0;
+printf("++++Enter Process NAME,++++++ Arrival Time & +++++++CPU Burst Time++++++\n");
+for(i=0;i<n;i++)
+scanf("%d %d %d",&(p+i)->name,&(p+i)->at,&(p+i)->bt);
+for(i=0;i<n;i++)
 {
-(n+i)->status=0;
-printf("=================================\");
-printf("\n## Enter the Processes Name : %d",&(n+i)->nam);
-printf("\n## Enter the Arrival time of the process :%d",&(n+i)->avrt);
-printf("\n## Enter the CPU Burst Time for the process-- %d\n",&(n+i)->btt);
-for (i=0;i<l;i++)
+if((p+i)->status==0)
 {
-if((n+i)->status==0)
+b=(p+i)->bt;
+s_nums=smallers(b);
+if(s_nums>0)
 {
-a=(n+i)->btt;
-e_num=smaller(a);
-if (e_num>0)
+(p+i)->left=(p+i)->bt;
+for(j=0;j<s_nums;j++)
 {
-(n+i)->left=(n+i)->btt;
-for(j=0;j<e_num;j++)
+p_time=c_time;
+pro_num=search(*(a+j));
+if(c_time<(p+pro_num)->at)
 {
-n_tim=d_tim;
-pr_numm=searching(*(b+j));
-if(d_tim<(n+pr_numm)->avrt)
+if((p+i)->left>(p+pro_num)->at)
 {
-if((n+i)->left>(n+pr_numm)->avrt)
-{
-d_tim=(n+pr_numm)->avrt;
-(n+i)->left=(n+i)->btt-(d_tim-n_tim);
-d_tim=d_tim+(n+n+pr_numm)->btt;
-(n+pr_numm)->status=1;}
-else{d_tim=d_tim+(n+i)->btt;
-(n+i)->trt=d_tim-(n+i)->avrt;
-(n+i)->status=1;
-if(d_tim<(n+pr_numm)->avrt)
-break;}}
-else{d_tim=d_tim+(n+pr_numm)->btt;}
-(n+pr_num)->trt=d_tim-(n+pr_numm)->avrt;
-(n+pr_numm)->status=1;}
-if((n+i)->status==0)
-{
-d_tim=d_tim+(n+i)->left;
-(n+i)->trt=d_time-(n+i)->avrt;
-(n+i)->status=1;}}
-else{d_tim=d_tim+(n+i)->btt;
-(n+i)->trt=d_tim-(n+i)->avrt;
-(n+i)->status=1;}}}
-printf("\nProcesses\t\tArrival Time \t\t CPU Burst Time\t\t Turn Arount Time\t\t Waiting Time\n");
-for(i=0;i<l;i++)
-{
-printf("%d\t\t %d\t\t\t %d\t\t\t %d\t\t\t\t %d\n",(n+i)->nam,(n+i)->avrt,(n+i)->btt,(n+i)->trt,(n+i)->wet);}
-printf("\nAverage Turnaround Time :%f\n",avrtt);
-printf("Average Waiting Time :%f\n\n",at);
-return 0;
+c_time=(p+pro_num)->at;
+(p+i)->left=(p+i)->bt-(c_time-p_time);
+c_time=c_time+(p+pro_num)->bt;
+(p+pro_num)->status=1;
 }
+else
+{
+c_time=c_time+(p+i)->bt;
+(p+i)->tt=c_time-(p+i)->at;
+(p+i)->status=1;
+if(c_time<(p+pro_num)->at)
+break;
+}
+}
+else
+{
+c_time=c_time+(p+pro_num)->bt;
+}
+(p+pro_num)->tt=c_time-(p+pro_num)->at;
+(p+pro_num)->status=1;
+}
+if((p+i)->status==0)
+{
+c_time=c_time+(p+i)->left;
+(p+i)->tt=c_time-(p+i)->at;
+(p+i)->status=1;
+}
+}
+else
+{	
+c_time=c_time+(p+i)->bt;
+(p+i)->tt=c_time-(p+i)->at;
+(p+i)->status=1;
+}
+}
+}
+printf("\nProcess\t\tArrival Time\t\tCPU Burst Time\t\tTurnAround Time\t\tWaiting Time\n");
+for(i=0;i<n;i++)
+{
+(p+i)->wt=(p+i)->tt-(p+i)->bt;
+awt=awt+(p+i)->wt;
+att=att+(p+i)->tt;
+}
+for(i=0;i<n;i++)
+{
+printf("%d\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d\n",(p+i)->name,(p+i)->at,(p+i)->bt,(p+i)->tt,(p+i)->wt);
+}
+printf("\nAverage Turnaround Time :  %f\n",att/n);
+printf("Average Waiting Time :  %f\n\n",awt/n);
+return 0;
 }
 /*
 output: Shortest Job First For preemptive is as follows:-
